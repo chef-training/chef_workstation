@@ -39,6 +39,7 @@ end
 sudo "chef_user" do
   user chef_user
   nopasswd true
+  defaults ['!requiretty']
 end
 
 chef_dk 'install' do
@@ -73,11 +74,14 @@ end
 end
 
 # disable selinux & iptables because complexity
-template "/etc/selinux/config" do
-  source "selinux-config.erb"
-  owner "root"
-  group "root"
-  mode "0644"
+case node["platform"]
+  when "redhat", "centos", "fedora"
+    template "/etc/selinux/config" do
+    source "selinux-config.erb"
+    owner "root"
+    group "root"
+    mode "0644"
+  end
 end
 
 service 'iptables' do
