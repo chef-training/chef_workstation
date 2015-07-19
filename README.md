@@ -89,7 +89,7 @@ Chef Software, Inc. 2015.  Released under the [MIT license][license].
 
 [repo]:				https://github.com/gmiranda23/chef_workstation/
 [classroom_repo]:	http://github.com/gmiranda23/chef_classroom
-[ccsa_license]:		http://link.to.creative.commons
+[ccsa_license]:		https://creativecommons.org/licenses/by-sa/3.0/us/
 [license]:			https://github.com/gmiranda23/chef_workstation/blob/master/LICENSE
 [chef_training]:	http://chef.io/training
 [issues]:			https://github.com/gmiranda23/chef_workstation/issues
