@@ -3,24 +3,20 @@ provisioner:
   name: chef_zero
 
 platforms:
-#   - name: amazon-6.5
-#     driver:
-#       name: ec2
-#       aws_ssh_key_id: id_rsa-aws
-#       security_group_ids: ["sg-1a2b3c4d"]
-#       region: us-west-2
-#       require_chef_omnibus: true
-#       subnet_id: subnet-6e5d4c3b
-#       instance_type: t2.medium
-#       associate_public_ip: true
-#       image_id: ami-c7d092f7
-#     transport:
-#       username: ec2-user
-#       ssh_key: /path/to/id_rsa-aws
-#
   - name: centos-6.6
     driver:
       name: vagrant
+  - name: amazon-2015.03
+    driver:
+      name: ec2
+      region: us-east-1
+      image_id: ami-1ecae776
+      aws_ssh_key_id: id_rsa-aws
+      instance_type: t2.medium
+      security_group_ids: ["default"]
+    transport:
+      username: ec2-user
+      ssh_key: ~/.ssh/id_rsa-aws.pem
 
 suites:
   - name: default

@@ -15,14 +15,13 @@ Requirements
 ------------
 ### Supported Operating Systems
 - Centos 6
+- Amazon Linux 2015.03
 
 Roadmap:
 
-- Amazon Linux 6
 - Windows
 
 At present, only CentOS instances are used as base student workstations, though these recipes should work on other RHEL platform family distros.
-
 
 ### Generating AMIs
 During Chef-led training sessions, student workstations typically run in EC2.  Chef typically discourages use of "pre-baked" AMIs (i.e. golden images), except when use of such artifacts is warranted.  It may be more efficient for classroom environments to build one AMI and spin up many of those as opposed to spinning up dozens of instances all building in parallel (YMMV).  Begining Chef students may also prefer use of a static AMI to get started quickly.  The ``packer.json`` and ``ami_create.sh`` script provided in this repo are used to periodically update static AMIs.
@@ -46,7 +45,7 @@ For ease of classroom use, this cookbook creates a named user account and enable
 
 * `chef_workstation['user']` - Named user account to create 
 * `chef_workstation['password']` - Plaintext password for auth
-* `['chef_workstation']['docker']['rpm']` - URI for the docker-engine rpm to install
+* `chef_workstation['docker']['rpm']` - URI for the docker-engine rpm to install
 
 Use of this cookbook is (obviously) not recommended for production or anything other than an inconsequential classroom setting.
 

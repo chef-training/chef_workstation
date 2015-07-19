@@ -69,12 +69,14 @@ describe 'chef_workstation::default' do
     expect(package 'nano').to_not be_installed
   end
 
-  it 'disables selinux' do
-    expect(file '/etc/selinux/config').to be_file
-    expect(file '/etc/selinux/config').to be_owned_by('root')
-    expect(file '/etc/selinux/config').to be_grouped_into('root')
-    expect(file '/etc/selinux/config').to contain('SELINUXTYPE=targeted')
-    expect(file '/etc/selinux/config').to contain('SELINUX=disabled')
+  if os[:family] == 'centos'
+    it 'disables selinux' do
+      expect(file '/etc/selinux/config').to be_file
+      expect(file '/etc/selinux/config').to be_owned_by('root')
+      expect(file '/etc/selinux/config').to be_grouped_into('root')
+      expect(file '/etc/selinux/config').to contain('SELINUXTYPE=targeted')
+      expect(file '/etc/selinux/config').to contain('SELINUX=disabled')
+    end
   end
 
   it 'stops and disables the iptables service' do
