@@ -41,7 +41,7 @@ execute "update_chef_provisioning" do
     "GEM_HOME" => "/home/#{chef_user}/.chefdk/gem/ruby/2.1.0",
     "GEM_PATH" => "/home/#{chef_user}/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/ruby/gems/2.1.0"
   )
-  not_if "chef gem list chef-provisioning | grep 'chef-provisioning (' | grep ','"
+  not_if "sudo -u #{chef_user} chef gem list chef-provisioning | grep 'chef-provisioning (' | grep ','"
 end
 
 # mock credentials for AWS workshops
