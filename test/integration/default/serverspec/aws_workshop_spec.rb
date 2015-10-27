@@ -28,7 +28,6 @@
 require 'spec_helper'
 
 describe 'chef_workstation::aws_workshop' do
-
   # it 'updates chef-provisioning and chef-provisioning-aws as the chef user' do
   #   expect(package 'chef-provisioning').to be_installed.by('gem')
   #   expect(package 'chef-provisioning-aws').to be_installed.by('gem')

@@ -29,14 +29,14 @@
 chef_user = node['chef_workstation']['user']
 
 user chef_user do
-  comment "Chef User"
-  shell "/bin/bash"
+  comment 'Chef User'
+  shell '/bin/bash'
   home "/home/#{chef_user}"
-  supports :manage_home => true
-  password node['chef_workstation']['password'].crypt("$6$" + rand(36**8).to_s(36))
+  supports manage_home: true
+  password node['chef_workstation']['password'].crypt('$6$' + rand(36**8).to_s(36))
 end
 
-sudo "chef_user" do
+sudo 'chef_user' do
   user chef_user
   nopasswd true
   defaults ['!requiretty']
@@ -48,23 +48,23 @@ chef_dk 'install' do
 end
 
 template "/home/#{chef_user}/.bashrc" do
-  source "bashrc.erb"
+  source 'bashrc.erb'
   owner chef_user
   group chef_user
-  mode "0644"
+  mode '0644'
 end
 
 # enable password login
-service "sshd" do
+service 'sshd' do
   action :nothing
 end
 
-template "/etc/ssh/sshd_config" do
-  source "sshd_config.erb"
-  owner "root"
-  group "root"
-  mode "0644"
-  notifies :restart, "service[sshd]"
+template '/etc/ssh/sshd_config' do
+  source 'sshd_config.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[sshd]'
 end
 
 # these are the chef-apply resource examples we use in class
@@ -75,17 +75,17 @@ end
 end
 
 # disable selinux & iptables because complexity
-case node["platform"]
-  when "redhat", "centos", "fedora"
-  template "/etc/selinux/config" do
-    source "selinux-config.erb"
-    owner "root"
-    group "root"
-    mode "0644"
+case node['platform']
+when 'redhat', 'centos', 'fedora'
+  template '/etc/selinux/config' do
+    source 'selinux-config.erb'
+    owner 'root'
+    group 'root'
+    mode '0644'
   end
 end
 
 service 'iptables' do
-  supports :status => true, :restart => true, :reload => true
+  supports status: true, restart: true, reload: true
   action [:stop, :disable]
 end

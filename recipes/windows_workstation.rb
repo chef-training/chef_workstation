@@ -29,11 +29,11 @@
 chef_user = node['chef_workstation']['user']
 
 user chef_user do
-  comment "Chef User"
-  password node['chef_workstation']['password'].crypt("$6$" + rand(36**8).to_s(36))
+  comment 'Chef User'
+  password node['chef_workstation']['password'].crypt('$6$' + rand(36**8).to_s(36))
 end
 
-group "Administrators" do
+group 'Administrators' do
   members ['chef']
   append true
   action :modify

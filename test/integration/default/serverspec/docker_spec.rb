@@ -28,7 +28,6 @@
 require 'spec_helper'
 
 describe 'chef_workstation::docker' do
-
   it 'creates the docker group with chef as a member' do
     expect(group 'docker').to exist
     expect(user 'chef').to belong_to_group('docker')

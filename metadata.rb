@@ -8,6 +8,6 @@ version '0.1.1'
 
 supports 'centos'
 supports 'amazon'
-depends  "yum"
-depends  "chef-dk"
-depends  "sudo"
+depends 'yum'
+depends 'chef-dk'
+depends 'sudo'

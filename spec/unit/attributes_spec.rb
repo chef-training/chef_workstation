@@ -35,7 +35,6 @@ describe 'chef_workstation attributes' do
   let(:chef_workstation) { chef_run.node['chef_workstation'] }
 
   describe 'When all attributes are default on CentOS 6 it' do
-
     it 'sets the named user account to chef' do
       expect(chef_workstation['user']).to eq('chef')
     end
@@ -43,6 +42,5 @@ describe 'chef_workstation attributes' do
     it 'sets the plaintext password to something with chef in it' do
       expect(chef_workstation['password']).to include('chef')
     end
-
   end
 end

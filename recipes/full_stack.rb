@@ -26,6 +26,6 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-include_recipe "chef_workstation::default"
-include_recipe "chef_workstation::docker"
-include_recipe "chef_workstation::aws_workshop"
+include_recipe 'chef_workstation::default'
+include_recipe 'chef_workstation::docker'
+include_recipe 'chef_workstation::aws_workshop'

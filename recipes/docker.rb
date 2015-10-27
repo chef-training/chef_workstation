@@ -26,10 +26,10 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-include_recipe "chef_workstation"
-include_recipe "chef_workstation::yum_update"
+include_recipe 'chef_workstation'
+include_recipe 'chef_workstation::yum_update'
 
-group "docker" do
+group 'docker' do
   members ['chef']
   append true
 end
@@ -38,31 +38,31 @@ end
   package dependency
 end
 
-docker_engine_rpm = Chef::Config[:file_cache_path] + "/docker-engine.rpm"
+docker_engine_rpm = Chef::Config[:file_cache_path] + '/docker-engine.rpm'
 
 remote_file docker_engine_rpm do
   source node['chef_workstation']['docker']['rpm']
-  not_if "rpm -q docker-engine"
+  not_if 'rpm -q docker-engine'
 end
 
-rpm_package "docker-engine" do
+rpm_package 'docker-engine' do
   source docker_engine_rpm
   notifies :delete, "remote_file[#{docker_engine_rpm}]", :immediately
-  not_if "rpm -q docker-engine"
+  not_if 'rpm -q docker-engine'
 end
 
-service "docker" do
-  supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
+service 'docker' do
+  supports status: true, restart: true, reload: true
+  action [:enable, :start]
 end
 
 execute 'docker pull centos:6' do
   action :run
-  not_if "docker images | grep centos"
+  not_if 'docker images | grep centos'
 end
 
-gem_package "kitchen-docker" do
-  gem_binary "/opt/chefdk/embedded/bin/gem"
-  options "--no-user-install"
-  notifies :restart, "service[docker]"
+gem_package 'kitchen-docker' do
+  gem_binary '/opt/chefdk/embedded/bin/gem'
+  options '--no-user-install'
+  notifies :restart, 'service[docker]'
 end
