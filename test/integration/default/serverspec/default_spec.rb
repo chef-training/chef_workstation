@@ -78,9 +78,4 @@ describe 'chef_workstation::default' do
       expect(file '/etc/selinux/config').to contain('SELINUX=disabled')
     end
   end
-
-  it 'stops and disables the iptables service' do
-    expect(service 'iptables').to_not be_running
-    expect(service 'iptables').to_not be_enabled
-  end
 end
