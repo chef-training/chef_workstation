@@ -43,6 +43,7 @@ sudo "chef_user" do
 end
 
 chef_dk 'install' do
+  version node['chef_workstation']['chefdk']['version']
   global_shell_init true
 end
 
