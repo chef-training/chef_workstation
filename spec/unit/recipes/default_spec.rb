@@ -54,7 +54,7 @@ describe 'chef_workstation::default' do
         user:  'chef',
         group: 'chef',
         mode:  '0644'
-        )
+      )
     end
 
     it 'enables chefdk shell init' do
@@ -67,7 +67,7 @@ describe 'chef_workstation::default' do
         user:  'root',
         group: 'root',
         mode:  '0644'
-        )
+      )
     end
 
     it 'enables ssh password auth' do
@@ -107,6 +107,5 @@ describe 'chef_workstation::default' do
     it 'converges successfully' do
       chef_run # This should not raise an error
     end
-
   end
 end

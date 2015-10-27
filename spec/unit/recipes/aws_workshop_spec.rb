@@ -47,14 +47,14 @@ describe 'chef_workstation::aws_workshop' do
       expect(chef_run).to create_directory('/home/chef/.aws').with(
         user: 'chef',
         group: 'chef'
-    )
+      )
     end
 
     it 'creates the ssh config directory' do
       expect(chef_run).to create_directory('/home/chef/.ssh').with(
         user: 'chef',
         group: 'chef'
-    )
+      )
     end
 
     it 'creates mock aws api credentials' do

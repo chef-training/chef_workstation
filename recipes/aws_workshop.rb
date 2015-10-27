@@ -26,20 +26,20 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-include_recipe "chef_workstation"
+include_recipe 'chef_workstation'
 chef_user = node['chef_workstation']['user']
 
 # The latest chef-provisioning-aws may not be in ChefDK
 # (note: shell init may not be yet available, so we have to fake it)
-execute "update_chef_provisioning" do
+execute 'update_chef_provisioning' do
   command "sudo -u #{chef_user} chef gem update chef-provisioning chef-provisioning-aws"
   user chef_user
   cwd "/home/#{chef_user}"
   environment(
-    "PATH" => "/opt/chefdk/bin:/opt/chefdk/embedded/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin",
-    "GEM_ROOT" => "/opt/chefdk/embedded/lib/ruby/gems/2.1.0",
-    "GEM_HOME" => "/home/#{chef_user}/.chefdk/gem/ruby/2.1.0",
-    "GEM_PATH" => "/home/#{chef_user}/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/ruby/gems/2.1.0"
+    'PATH' => '/opt/chefdk/bin:/opt/chefdk/embedded/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin',
+    'GEM_ROOT' => '/opt/chefdk/embedded/lib/ruby/gems/2.1.0',
+    'GEM_HOME' => "/home/#{chef_user}/.chefdk/gem/ruby/2.1.0",
+    'GEM_PATH' => "/home/#{chef_user}/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/ruby/gems/2.1.0"
   )
   not_if "sudo -u #{chef_user} chef gem list chef-provisioning | grep 'chef-provisioning (' | grep ','"
 end
@@ -53,15 +53,15 @@ end
 end
 
 template "/home/#{chef_user}/.aws/config" do
-  source "config.erb"
+  source 'config.erb'
   owner chef_user
   group chef_user
-  mode "0644"
+  mode '0644'
 end
 
 template "/home/#{chef_user}/.ssh/aws_popup_chef.pem" do
-  source "aws_popup_chef.erb"
+  source 'aws_popup_chef.erb'
   owner chef_user
   group chef_user
-  mode "0644"
+  mode '0644'
 end

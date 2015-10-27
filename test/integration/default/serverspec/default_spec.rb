@@ -28,7 +28,6 @@
 require 'spec_helper'
 
 describe 'chef_workstation::default' do
-
   it 'creates a chef user' do
     expect(user 'chef').to exist
     expect(user 'chef').to have_home_directory('/home/chef')
