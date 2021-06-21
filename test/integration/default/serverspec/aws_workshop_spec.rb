@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Spec:: aws_workshop
 #
 # Author:: George Miranda (<gmiranda@chef.io>)
@@ -34,29 +34,29 @@ describe 'chef_workstation::aws_workshop' do
   # end
 
   it 'creates the aws config directory' do
-    expect(file '/home/chef/.aws').to be_directory
-    expect(file '/home/chef/.aws').to be_owned_by('chef')
-    expect(file '/home/chef/.aws').to be_grouped_into('chef')
+    expect(file('/home/chef/.aws')).to be_directory
+    expect(file('/home/chef/.aws')).to be_owned_by('chef')
+    expect(file('/home/chef/.aws')).to be_grouped_into('chef')
   end
 
   it 'creates the aws config directory' do
-    expect(file '/home/chef/.ssh').to be_directory
-    expect(file '/home/chef/.ssh').to be_owned_by('chef')
-    expect(file '/home/chef/.ssh').to be_grouped_into('chef')
+    expect(file('/home/chef/.ssh')).to be_directory
+    expect(file('/home/chef/.ssh')).to be_owned_by('chef')
+    expect(file('/home/chef/.ssh')).to be_grouped_into('chef')
   end
 
   it 'creates mock aws api credentials' do
-    expect(file '/home/chef/.aws/config').to be_file
-    expect(file '/home/chef/.aws/config').to be_owned_by('chef')
-    expect(file '/home/chef/.aws/config').to be_grouped_into('chef')
-    expect(file '/home/chef/.aws/config').to contain('aws_access_key_id = AKIAAABBCC')
-    expect(file '/home/chef/.aws/config').to contain('aws_secret_access_key = Abc0123dEf4GhI')
+    expect(file('/home/chef/.aws/config')).to be_file
+    expect(file('/home/chef/.aws/config')).to be_owned_by('chef')
+    expect(file('/home/chef/.aws/config')).to be_grouped_into('chef')
+    expect(file('/home/chef/.aws/config')).to contain('aws_access_key_id = AKIAAABBCC')
+    expect(file('/home/chef/.aws/config')).to contain('aws_secret_access_key = Abc0123dEf4GhI')
   end
 
   it 'creates a mock aws ssh key' do
-    expect(file '/home/chef/.ssh/aws_popup_chef.pem').to be_file
-    expect(file '/home/chef/.ssh/aws_popup_chef.pem').to be_owned_by('chef')
-    expect(file '/home/chef/.ssh/aws_popup_chef.pem').to be_grouped_into('chef')
-    expect(file '/home/chef/.ssh/aws_popup_chef.pem').to contain('ThisIsNotRealContent')
+    expect(file('/home/chef/.ssh/aws_popup_chef.pem')).to be_file
+    expect(file('/home/chef/.ssh/aws_popup_chef.pem')).to be_owned_by('chef')
+    expect(file('/home/chef/.ssh/aws_popup_chef.pem')).to be_grouped_into('chef')
+    expect(file('/home/chef/.ssh/aws_popup_chef.pem')).to contain('ThisIsNotRealContent')
   end
 end

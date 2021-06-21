@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Test:: attributes_spec
 #
 # Author:: George Miranda (<gmiranda@chef.io>)
@@ -29,7 +29,7 @@ require 'spec_helper'
 
 describe 'chef_workstation attributes' do
   let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.6')
+    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6')
     runner.converge('chef_workstation::default')
   end
   let(:chef_workstation) { chef_run.node['chef_workstation'] }

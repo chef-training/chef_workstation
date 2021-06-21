@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Recipe:: windows_workstation
 #
 # Author:: Ned Harris (<nharris@chef.io>)

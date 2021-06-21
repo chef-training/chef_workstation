@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Recipe:: yum_update
 #
 # Author:: Ned Harris (<nharris@chef.io>)

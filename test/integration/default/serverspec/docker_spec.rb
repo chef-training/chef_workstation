@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Spec:: aws_workshop
 #
 # Author:: George Miranda (<gmiranda@chef.io>)
@@ -29,26 +29,26 @@ require 'spec_helper'
 
 describe 'chef_workstation::docker' do
   it 'creates the docker group with chef as a member' do
-    expect(group 'docker').to exist
-    expect(user 'chef').to belong_to_group('docker')
+    expect(group('docker')).to exist
+    expect(user('chef')).to belong_to_group('docker')
   end
 
   it 'installs docker package dependencies' do
-    expect(package 'xz').to be_installed
-    expect(package 'libcgroup').to be_installed
+    expect(package('xz')).to be_installed
+    expect(package('libcgroup')).to be_installed
   end
 
   it 'installs the docker package' do
-    expect(package 'docker-engine').to be_installed
+    expect(package('docker-engine')).to be_installed
   end
 
   it 'starts and enables the docker service' do
-    expect(service 'docker').to be_running
-    expect(service 'docker').to be_enabled
+    expect(service('docker')).to be_running
+    expect(service('docker')).to be_enabled
   end
 
   it 'pulls a centos 6 docker image' do
-    expect(docker_image 'centos:6').to exist
+    expect(docker_image('centos:6')).to exist
   end
 
   # it 'installs the kitchen-docker gem' do

@@ -1,15 +1,15 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Spec:: default
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
+# Copyright:: (c) 2015 The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
 describe 'chef_workstation::yum_update' do
   context 'When all attributes are default on CentOS 6 it' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.6')
+      runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6')
       runner.converge(described_recipe)
     end
 

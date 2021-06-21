@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Recipe:: default
 #
 # Author:: Ned Harris (<nharris@chef.io>)
@@ -32,7 +32,7 @@ user chef_user do
   comment 'Chef User'
   shell '/bin/bash'
   home "/home/#{chef_user}"
-  supports manage_home: true
+  manage_home true
   password node['chef_workstation']['password'].crypt('$6$' + rand(36**8).to_s(36))
 end
 
@@ -75,8 +75,7 @@ end
 end
 
 # disable selinux & iptables because complexity
-case node['platform']
-when 'redhat', 'centos', 'fedora'
+if platform?('redhat', 'centos', 'fedora')
   template '/etc/selinux/config' do
     source 'selinux-config.erb'
     owner 'root'
