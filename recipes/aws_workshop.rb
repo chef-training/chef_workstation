@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Recipe:: aws_workshop
 #
 # Author:: Ned Harris (<nharris@chef.io>)

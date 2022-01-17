@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_workstation
+# Cookbook:: chef_workstation
 # Spec:: docker
 #
 # Author:: George Miranda (<gmiranda@chef.io>)
@@ -30,7 +30,7 @@ require 'spec_helper'
 describe 'chef_workstation::docker' do
   context 'When all attributes are default on CentOS 6 it' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.6', file_cache_path: '/tmp/chef/cache')
+      runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6', file_cache_path: '/tmp/chef/cache')
       runner.converge(described_recipe)
     end
     before(:each) do
