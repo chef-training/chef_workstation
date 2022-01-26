@@ -15,5 +15,3 @@ RSpec.configure do |config|
     stub_my_guards
   end
 end
-
-at_exit { ChefSpec::Coverage.report! }
